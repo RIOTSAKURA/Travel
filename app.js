@@ -426,6 +426,16 @@
     return routesCache.find(function (r) { return r.id === routeId; });
   }
 
+  // ── Accordion toggle ──────────────────────────────────
+  function initAccordion() {
+    document.querySelectorAll(".accordion-header").forEach(function (header) {
+      header.addEventListener("click", function () {
+        var acc = header.parentElement;
+        acc.classList.toggle("collapsed");
+      });
+    });
+  }
+
   // ── Boot ──────────────────────────────────────────────
   document.getElementById("travel-title").firstChild.textContent =
     TRAVEL_CONFIG.title || "旅行路线";
@@ -434,6 +444,7 @@
 
   initMap();
   map.on("popupopen", onPopupOpen);
+  initAccordion();
 
   loadRoutes().then(function () {
     renderRouteTabs();
