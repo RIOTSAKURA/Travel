@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅行路线 · Travel Routes</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 id="travel-title">旅行路线<span class="sub" id="travel-subtitle"></span></h1>
+    <div class="route-tabs" id="route-tabs"></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="legend">
+      <span class="lg"><span class="dot ink"></span>固定路线点</span>
+      <span class="lg"><span class="dot amber"></span>可选点（点击下拉选择）</span>
+      <span class="lg"><span class="dot rust"></span>应急方案</span>
+      <span class="lg"><span class="dot cancel"></span>已取消点位</span>
+      <span class="lg" style="color:var(--muted)">底图：高德地图（右上角切换 行政区划图 / 影像地形图）</span>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="map-card"><div id="map"></div></div>
+    <div class="side">
+      <div class="summary">
+        <h2>当前选择摘要</h2>
+        <div class="chips" id="chips"></div>
+      </div>
+      <div id="cards"></div>
+      <div class="days">
+        <h2>日程一览</h2>
+        <table id="days-table">
+          <tr><th>天</th><th>路线</th><th>亮点 / 决策</th></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    点位坐标为真实经纬度（已做 GCJ-02 纠偏对齐高德底图）· 连线为按实际道路走向的示意线 · 点击圆点查看名称与详情
+  </footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="config.js?v=4"></script>
+<script src="app.js?v=4"></script>
+</body>
+</html>
