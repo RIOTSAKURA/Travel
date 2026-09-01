@@ -2,8 +2,6 @@
 
 展示旅行计划路线的静态网站，基于 Leaflet 1.9.4 + 高德地图瓦片，暖色纸质风格界面。
 
-> 参考设计：[oceans-penguin.github.io/daxinganling](https://oceans-penguin.github.io/daxinganling/)
-
 ## 特性
 
 - **无需 API Key**：直接使用高德瓦片服务
