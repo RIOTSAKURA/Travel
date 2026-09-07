@@ -257,14 +257,14 @@
         bounds.extend(toGCJ02(s.lat, s.lng));
       });
     }
-    if (route.canceled) {
-      route.canceled.forEach(function (s) {
-        bounds.extend(toGCJ02(s.lat, s.lng));
-      });
-    }
     if (route.options) {
       route.options.forEach(function (o) {
         bounds.extend(toGCJ02(o.lat, o.lng));
+      });
+    }
+    if (route.corridor && route.corridor.length >= 2) {
+      route.corridor.forEach(function (p) {
+        bounds.extend(toGCJ02(p[0], p[1]));
       });
     }
     if (bounds.isValid()) {
