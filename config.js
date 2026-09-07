@@ -13,6 +13,7 @@ const TRAVEL_CONFIG = {
   routeFiles: [
     "routes/lijiang_shangrila.json",
     "routes/southeast_tibet.json",
-    "routes/chuanxi_loop.json"
+    "routes/chuanxi_loop.json",
+    "routes/gannan_loop.json"
   ]
 };

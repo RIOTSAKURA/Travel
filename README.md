@@ -28,7 +28,8 @@ Travel/
 ├── routes/                 # 路线数据目录（每条路线一个 JSON 文件）
 │   ├── lijiang_shangrila.json  # 丽江—香格里拉
 │   ├── southeast_tibet.json   # 藏东大环线
-│   └── chuanxi_loop.json      # 川西小环线
+│   ├── chuanxi_loop.json      # 川西小环线
+│   └── gannan_loop.json       # 甘南环线
 └── README.md
 ```
 
@@ -45,7 +46,8 @@ const TRAVEL_CONFIG = {
   routeFiles: [
     "routes/lijiang_shangrila.json",
     "routes/southeast_tibet.json",
-    "routes/chuanxi_loop.json"
+    "routes/chuanxi_loop.json",
+    "routes/gannan_loop.json"
   ]
 };
 ```
