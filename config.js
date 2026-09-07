@@ -11,8 +11,7 @@ const TRAVEL_CONFIG = {
   subtitle: "地图可缩放拖动，点击圆点查看详情",
 
   routeFiles: [
-    "routes/silk_road.json",
-    "routes/tibet_journey.json",
-    "routes/lijiang_shangrila.json"
+    "routes/lijiang_shangrila.json",
+    "routes/southeast_tibet.json"
   ]
 };

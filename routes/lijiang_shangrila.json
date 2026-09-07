@@ -83,10 +83,10 @@
   ],
 
   "days": [
-    { "day": "D1", "route": "丽江", "highlight": "大研古城 · 四方街 · 木府 · 狮子山日落" },
-    { "day": "D2", "route": "丽江 → 玉龙雪山 → 香格里拉", "highlight": "冰川公园 · 蓝月谷 · 松赞林寺 · 独克宗古城" },
-    { "day": "D3", "route": "香格里拉 → 飞来寺", "highlight": "金沙江大拐弯 · 白马雪山垭口 · 日照金山" },
-    { "day": "D4", "route": "飞来寺 → 虎跳峡", "highlight": "梅里晨景 · 虎跳峡徒步 · 金沙江峡谷" },
-    { "day": "D5", "route": "虎跳峡 → 丽江", "highlight": "束河古镇 / 拉市海 · 返程" }
+    { "day": "D1", "route": "丽江", "highlight": "大研古城 · 四方街 · 木府 · 狮子山日落", "distance": "—" },
+    { "day": "D2", "route": "丽江 → 玉龙雪山 → 香格里拉", "highlight": "冰川公园 · 蓝月谷 · 松赞林寺 · 独克宗古城", "distance": "180km" },
+    { "day": "D3", "route": "香格里拉 → 飞来寺", "highlight": "金沙江大拐弯 · 白马雪山垭口 · 日照金山", "distance": "170km" },
+    { "day": "D4", "route": "飞来寺 → 虎跳峡", "highlight": "梅里晨景 · 虎跳峡徒步 · 金沙江峡谷", "distance": "240km" },
+    { "day": "D5", "route": "虎跳峡 → 丽江", "highlight": "束河古镇 / 拉市海 · 返程", "distance": "100km" }
   ]
 }

@@ -349,11 +349,11 @@
 
   function renderDaysTable(route) {
     var table = document.getElementById("days-table");
-    table.innerHTML = "<tr><th>天</th><th>路线</th><th>亮点 / 决策</th></tr>";
+    table.innerHTML = "<tr><th>天</th><th>路线</th><th>里程</th><th>亮点 / 决策</th></tr>";
     if (route.days) {
       route.days.forEach(function (d) {
         table.insertAdjacentHTML("beforeend",
-          "<tr><td>" + d.day + "</td><td>" + d.route + "</td><td>" + d.highlight + "</td></tr>");
+          "<tr><td>" + d.day + "</td><td>" + d.route + "</td><td>" + (d.distance || "—") + "</td><td>" + d.highlight + "</td></tr>");
         });
     }
   }

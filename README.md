@@ -26,8 +26,8 @@ Travel/
 ├── config.js               # 站点级配置（标题 + 路线文件清单）
 ├── app.js                  # Leaflet 地图初始化与交互逻辑
 ├── routes/                 # 路线数据目录（每条路线一个 JSON 文件）
-│   ├── silk_road.json      # 丝绸之路
-│   └── tibet_journey.json  # 川藏南线
+│   ├── lijiang_shangrila.json  # 丽江—香格里拉
+│   └── southeast_tibet.json   # 藏东大环线
 └── README.md
 ```
 
@@ -42,8 +42,8 @@ const TRAVEL_CONFIG = {
   title: "我的旅行计划",
   subtitle: "...",
   routeFiles: [
-    "routes/silk_road.json",
-    "routes/tibet_journey.json"
+    "routes/lijiang_shangrila.json",
+    "routes/southeast_tibet.json"
   ]
 };
 ```
