@@ -27,7 +27,8 @@ Travel/
 ├── app.js                  # Leaflet 地图初始化与交互逻辑
 ├── routes/                 # 路线数据目录（每条路线一个 JSON 文件）
 │   ├── lijiang_shangrila.json  # 丽江—香格里拉
-│   └── southeast_tibet.json   # 藏东大环线
+│   ├── southeast_tibet.json   # 藏东大环线
+│   └── chuanxi_loop.json      # 川西小环线
 └── README.md
 ```
 
@@ -43,7 +44,8 @@ const TRAVEL_CONFIG = {
   subtitle: "...",
   routeFiles: [
     "routes/lijiang_shangrila.json",
-    "routes/southeast_tibet.json"
+    "routes/southeast_tibet.json",
+    "routes/chuanxi_loop.json"
   ]
 };
 ```
