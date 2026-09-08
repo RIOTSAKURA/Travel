@@ -412,6 +412,9 @@
 
   function selectRoute(routeId) {
     currentRouteId = routeId;
+    if (location.hash !== "#" + routeId) {
+      location.hash = routeId;
+    }
     document.querySelectorAll(".route-tab").forEach(function (tab, i) {
       tab.classList.toggle("active", routesCache[i].id === routeId);
     });
@@ -446,10 +449,19 @@
   map.on("popupopen", onPopupOpen);
   initAccordion();
 
+  window.addEventListener("hashchange", function () {
+    var hashId = location.hash.replace(/^#/, "");
+    if (hashId && hashId !== currentRouteId && findRoute(hashId)) {
+      selectRoute(hashId);
+    }
+  });
+
   loadRoutes().then(function () {
     renderRouteTabs();
-    if (routesCache.length > 0) {
-      selectRoute(routesCache[0].id);
+    var hashId = location.hash.replace(/^#/, "");
+    var initialId = (hashId && findRoute(hashId)) ? hashId : (routesCache.length > 0 ? routesCache[0].id : null);
+    if (initialId) {
+      selectRoute(initialId);
     } else {
       document.getElementById("cards").innerHTML =
         '<div class="card"><div class="info">未加载到任何路线数据，请检查 routes/ 目录中的 JSON 文件。</div></div>';
