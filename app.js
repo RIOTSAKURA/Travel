@@ -405,6 +405,7 @@
       var tab = document.createElement("button");
       tab.className = "route-tab";
       tab.textContent = route.name;
+      tab.style.setProperty("--tab-color", route.color || "#C07D00");
       tab.addEventListener("click", function () { selectRoute(route.id); });
       container.appendChild(tab);
     });
@@ -421,6 +422,9 @@
     var route = findRoute(routeId);
     if (!route) return;
     state = {};
+    document.documentElement.style.setProperty("--route-color", route.color || "#C07D00");
+    var wm = document.getElementById("map-watermark");
+    if (wm) wm.textContent = route.name;
     renderRoute(route);
     renderSidebar(route);
   }

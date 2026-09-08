@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>旅行线路图 · Travel Routes</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1 id="travel-title">旅行线路图<span class="sub" id="travel-subtitle"></span></h1>
     <div class="route-tabs" id="route-tabs"></div>
-    <div class="kpis" id="kpis"></div>
     <div class="legend">
       <span class="lg"><span class="dot ink"></span>固定路线点</span>
       <span class="lg"><span class="dot amber"></span>可选点（点击下拉选择）</span>
@@ -23,8 +22,12 @@
   </header>
 
   <div class="main">
-    <div class="map-card"><div id="map"></div></div>
+    <div class="map-card">
+      <div id="map"></div>
+      <div class="map-watermark" id="map-watermark"></div>
+    </div>
     <div class="side" id="sidebar">
+      <div class="kpis" id="kpis"></div>
       <div class="summary">
         <h2>当前选择摘要</h2>
         <div class="chips" id="chips"></div>
@@ -60,7 +63,7 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="config.js?v=14"></script>
-<script src="app.js?v=14"></script>
+<script src="config.js?v=15"></script>
+<script src="app.js?v=15"></script>
 </body>
 </html>
