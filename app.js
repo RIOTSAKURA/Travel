@@ -23,6 +23,7 @@
   var state = {};
   var layerGroup = null;
   var connectLayer = null;
+  var currentBounds = null;
 
   var COLORS = {
     amber: "#C07D00",
@@ -268,6 +269,7 @@
       });
     }
     if (bounds.isValid()) {
+      currentBounds = bounds;
       map.fitBounds(bounds, { padding: [30, 30] });
     }
 
@@ -425,6 +427,26 @@
     document.documentElement.style.setProperty("--route-color", route.color || "#C07D00");
     var wm = document.getElementById("map-watermark");
     if (wm) wm.textContent = route.name;
+    var mini = document.getElementById("route-mini");
+    if (mini && route.corridor && route.corridor.length >= 2) {
+      var lats = route.corridor.map(function (p) { return p[0]; });
+      var lngs = route.corridor.map(function (p) { return p[1]; });
+      var minLat = Math.min.apply(null, lats), maxLat = Math.max.apply(null, lats);
+      var minLng = Math.min.apply(null, lngs), maxLng = Math.max.apply(null, lngs);
+      var rangeLat = maxLat - minLat || 1, rangeLng = maxLng - minLng || 1;
+      var w = 48, h = 48, pad = 5;
+      var scale = Math.min((w - pad * 2) / rangeLng, (h - pad * 2) / rangeLat);
+      var offX = (w - rangeLng * scale) / 2, offY = (h - rangeLat * scale) / 2;
+      var d = route.corridor.map(function (p, i) {
+        var x = offX + (p[1] - minLng) * scale;
+        var y = h - (offY + (p[0] - minLat) * scale);
+        return (i === 0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1);
+      }).join(" ");
+      mini.innerHTML = '<svg viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '">' +
+        '<path d="' + d + '" fill="none" stroke="var(--route-color)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>' +
+        '<path d="' + d + '" fill="none" stroke="var(--route-color)" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.12"/>' +
+        "</svg>";
+    }
     renderRoute(route);
     renderSidebar(route);
   }
@@ -440,6 +462,31 @@
         var acc = header.parentElement;
         acc.classList.toggle("collapsed");
       });
+    });
+  }
+
+  // ── Action buttons ────────────────────────────────────
+  var btnReset = document.getElementById("btn-reset");
+  if (btnReset) {
+    btnReset.addEventListener("click", function () {
+      if (currentBounds && currentBounds.isValid()) {
+        map.fitBounds(currentBounds, { padding: [30, 30] });
+      }
+    });
+  }
+
+  var btnShare = document.getElementById("btn-share");
+  if (btnShare) {
+    btnShare.addEventListener("click", function () {
+      var url = location.origin + location.pathname + "#" + (currentRouteId || "");
+      var tmp = document.createElement("input");
+      tmp.value = url;
+      document.body.appendChild(tmp);
+      tmp.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(tmp);
+      btnShare.classList.add("copied");
+      setTimeout(function () { btnShare.classList.remove("copied"); }, 1200);
     });
   }
 

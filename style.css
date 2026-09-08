@@ -39,7 +39,11 @@ html,body{
 }
 
 body{
-  background:linear-gradient(180deg,var(--bg-grad-top),var(--bg-grad-bottom));
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,248,230,.5), transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(224,210,185,.3), transparent 50%),
+    linear-gradient(180deg,var(--bg-grad-top),var(--bg-grad-bottom));
+  background-attachment:fixed;
   color:var(--ink);
   font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
   line-height:1.6;
@@ -47,7 +51,19 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.72 0 0 0 0 0.64 0 0 0 0 0.48 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 .wrap{
+  position:relative;
+  z-index:1;
   max-width:1600px;
   margin:0 auto;
   padding:0 24px;
@@ -67,6 +83,76 @@ header{
   display:flex;
   align-items:center;
   gap:12px;
+}
+
+.header-right{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+}
+
+.route-mini{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  background:color-mix(in srgb, var(--route-color) 7%, var(--card));
+  border:1px solid color-mix(in srgb, var(--route-color) 20%, transparent);
+  border-radius:12px;
+  transition:var(--transition);
+}
+
+.route-mini svg{
+  display:block;
+}
+
+.header-actions{
+  display:flex;
+  gap:4px;
+}
+
+.action-btn{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1.5px solid var(--line);
+  background:var(--card);
+  color:var(--muted);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:var(--transition);
+  position:relative;
+}
+
+.action-btn:hover{
+  color:var(--route-color);
+  border-color:color-mix(in srgb, var(--route-color) 30%, transparent);
+  background:color-mix(in srgb, var(--route-color) 6%, var(--card));
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-sm);
+}
+
+.action-btn:active{
+  transform:translateY(0);
+}
+
+.action-btn.copied{
+  color:#fff;
+  background:var(--route-color);
+  border-color:var(--route-color);
+}
+
+.action-btn.copied::after{
+  content:'✓';
+  position:absolute;
+  font-size:14px;
+  font-weight:bold;
 }
 
 .compass-icon{
@@ -559,8 +645,10 @@ footer .legend{
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width:640px){
   .wrap{padding:0 14px}
-  h1{font-size:20px}
+  h1{font-size:18px}
   .compass-icon{width:30px;height:38px}
+  .route-mini{width:40px;height:40px}
+  .action-btn{width:30px;height:30px}
   .kpi{flex:1 1 calc(50% - 4px);padding:8px 12px}
   .kpi b{font-size:18px}
   .map-card{padding:6px}
