@@ -26,10 +26,8 @@ Travel/
 ├── config.js               # 站点级配置（标题 + 路线文件清单）
 ├── app.js                  # Leaflet 地图初始化与交互逻辑
 ├── routes/                 # 路线数据目录（每条路线一个 JSON 文件）
-│   ├── lijiang_shangrila.json  # 丽江—香格里拉
-│   ├── southeast_tibet.json   # 藏东大环线
-│   ├── chuanxi_loop.json      # 川西小环线
-│   └── gannan_loop.json       # 甘南环线
+│   └── *.json              # 路线文件
+├── favicon.svg             # 指南针图标
 └── README.md
 ```
 
@@ -44,10 +42,8 @@ const TRAVEL_CONFIG = {
   title: "我的旅行计划",
   subtitle: "...",
   routeFiles: [
-    "routes/lijiang_shangrila.json",
-    "routes/southeast_tibet.json",
-    "routes/chuanxi_loop.json",
-    "routes/gannan_loop.json"
+    "routes/your_route_1.json",
+    "routes/your_route_2.json"
   ]
 };
 ```
