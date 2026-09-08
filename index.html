@@ -4,21 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>旅行线路图 · Travel Routes</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1 id="travel-title">旅行线路图<span class="sub" id="travel-subtitle"></span></h1>
-    <div class="route-tabs" id="route-tabs"></div>
-    <div class="legend">
-      <span class="lg"><span class="dot ink"></span>固定路线点</span>
-      <span class="lg"><span class="dot amber"></span>可选点（点击下拉选择）</span>
-      <span class="lg"><span class="dot rust"></span>应急方案</span>
-      <span class="lg"><span class="dot cancel"></span>已取消点位</span>
-      <span class="lg" style="color:var(--muted)">底图：高德地图（右上角切换图层）</span>
+    <div class="header-row">
+      <svg class="compass-icon" viewBox="0 0 64 80" width="36" height="45">
+        <text x="32" y="10" font-size="11" fill="currentColor" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">N</text>
+        <circle cx="32" cy="46" r="28" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <circle cx="32" cy="46" r="22" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.25"/>
+        <polygon points="32,24 36,42 32,40 28,42" fill="currentColor"/>
+        <polygon points="32,68 28,50 32,52 36,50" fill="currentColor" opacity="0.4"/>
+        <circle cx="32" cy="46" r="2.5" fill="currentColor"/>
+      </svg>
+      <h1 id="travel-title">旅行线路图<span class="sub" id="travel-subtitle"></span></h1>
     </div>
+    <svg class="wave-divider" viewBox="0 0 1200 24" preserveAspectRatio="none" width="100%" height="20">
+      <path d="M0,12 Q60,2 120,12 T240,12 T360,12 T480,12 T600,12 T720,12 T840,12 T960,12 T1080,12 T1200,12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="0"/>
+      <path d="M0,14 Q60,4 120,14 T240,14 T360,14 T480,14 T600,14 T720,14 T840,14 T960,14 T1080,14 T1200,14" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.3"/>
+    </svg>
+    <div class="route-tabs" id="route-tabs"></div>
   </header>
 
   <div class="main">
@@ -58,12 +66,19 @@
   </div>
 
   <footer>
-    点位坐标为真实经纬度（已做 GCJ-02 纠偏对齐高德底图）· 点击圆点查看详情
+    <div class="legend">
+      <span class="lg"><span class="dot ink"></span>固定路线点</span>
+      <span class="lg"><span class="dot amber"></span>可选点（点击下拉选择）</span>
+      <span class="lg"><span class="dot rust"></span>应急方案</span>
+      <span class="lg"><span class="dot cancel"></span>已取消点位</span>
+      <span class="lg" style="color:var(--muted)">底图：高德地图（右上角切换图层）</span>
+    </div>
+    <span class="footer-note">点位坐标为真实经纬度（已做 GCJ-02 纠偏对齐高德底图）· 点击圆点查看详情</span>
   </footer>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="config.js?v=15"></script>
-<script src="app.js?v=15"></script>
+<script src="config.js?v=17"></script>
+<script src="app.js?v=17"></script>
 </body>
 </html>
